@@ -3,18 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>联系我们 - 青岛仪软智汇科技有限公司</title>
+    <title>联系我们 - 青岛仪软智汇</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="lang-switch"><button class="active" data-lang="zh">中</button><button data-lang="en">EN</button></div>
-    <nav class="navbar"><div class="nav-container"><div class="logo"><div class="logo-icon">仪</div><div class="logo-text"><h1>青岛仪软智汇</h1><span>实验室信息化解决方案专家</span></div></div><ul class="nav-menu"><li><a href="index.html">首页</a></li><li><a href="about.html">关于我们</a></li><li><a href="products.html">产品服务</a></li><li><a href="solutions.html">解决方案</a></li><li><a href="clients.html">客户案例</a></li><li><a href="contact.html" class="active">联系我们</a></li></ul><div class="mobile-menu-btn"><span></span><span></span><span></span></div></div></nav>
-    <main><section class="page-header"><h1>联系我们</h1><p>期待与您合作，共创数字化未来</p></section>
-    <div class="page-content"><div class="contact-grid">
-        <div class="contact-info"><h3>联系方式</h3><div class="contact-item"><div class="contact-icon">📍</div><div class="contact-details"><h4>公司地址</h4><p>山东省青岛市</p></div></div><div class="contact-item"><div class="contact-icon">📞</div><div class="contact-details"><h4>联系电话</h4><p>400-XXX-XXXX</p></div></div><div class="contact-item"><div class="contact-icon">✉️</div><div class="contact-details"><h4>电子邮箱</h4><p>contact@yiruan.com</p></div></div><div class="contact-item"><div class="contact-icon">⏰</div><div class="contact-details"><h4>工作时间</h4><p>周一至周五 9:00 - 18:00</p></div></div></div>
-        <div class="contact-form"><h3>商务咨询</h3><div style="background:#f7fafc;padding:30px;border-radius:10px;"><p style="margin-bottom:20px;">请留下您的联系方式，我们将尽快与您取得联系</p><p style="color:#1a365d;font-size:18px;font-weight:bold;">电话：400-XXX-XXXX</p></div></div>
-    </div></div></main>
-    <footer class="footer"><div class="footer-bottom"><p>&copy; 2024 青岛仪软智汇科技有限公司</p></div></footer>
-    <script src="js/main.js"></script>
+
+<!-- 导航 -->
+<header class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo" data-zh="仪软智汇" data-en="Yiruan Intelligence">仪软智汇</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-zh="首页" data-en="Home">首页</a></li>
+                <li><a href="about.html" data-zh="关于我们" data-en="About">关于我们</a></li>
+                <li><a href="products.html" data-zh="产品服务" data-en="Products">产品服务</a></li>
+                <li><a href="solutions.html" data-zh="解决方案" data-en="Solutions">解决方案</a></li>
+                <li><a href="contact.html" data-zh="联系我们" data-en="Contact">联系我们</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button data-lang="zh">中</button>
+                <button data-lang="en">EN</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 页面内容 -->
+<section class="section contact">
+    <div class="container">
+        <h2 class="title" data-zh="联系我们" data-en="Contact Us">联系我们</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><strong data-zh="公司名称：" data-en="Company: "></strong><span data-zh="青岛仪软智汇科技有限公司" data-en="Qingdao Yiruan Intelligence Technology Co., Ltd.">青岛仪软智汇科技有限公司</span></p>
+                <p><strong data-zh="公司地址：" data-en="Address: "></strong><span data-zh="山东省青岛市城阳区" data-en="Chengyang District, Qingdao, Shandong Province">山东省青岛市城阳区</span></p>
+                <p><strong data-zh="联系电话：" data-en="Phone: "></strong><span data-zh="400-888-9999" data-en="400-888-9999">400-888-9999</span></p>
+                <p><strong data-zh="电子邮箱：" data-en="Email: "></strong><span data-zh="contact@yiruan-intel.com" data-en="contact@yiruan-intel.com">contact@yiruan-intel.com</span></p>
+                <p><strong data-zh="工作时间：" data-en="Working Hours: "></strong><span data-zh="周一至周五 9:00 - 18:00" data-en="Monday to Friday 9:00 - 18:00">周一至周五 9:00 - 18:00</span></p>
+            </div>
+            <div class="contact-form">
+                <h3 data-zh="在线留言" data-en="Leave a Message">在线留言</h3>
+                <form>
+                    <input type="text" placeholder="您的姓名 / Your Name" required>
+                    <input type="email" placeholder="您的邮箱 / Your Email" required>
+                    <input type="tel" placeholder="您的电话 / Your Phone">
+                    <textarea placeholder="请输入您的留言内容 / Please enter your message" rows="5" required></textarea>
+                    <button type="submit" class="btn" data-zh="提交留言" data-en="Submit">提交留言</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container">
+        <p data-zh="©2026 青岛仪软智汇科技有限公司 版权所有" data-en="©2026 Qingdao Yiruan Intelligence Technology Co., Ltd. All Rights Reserved">©2026 青岛仪软智汇科技有限公司 版权所有</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
