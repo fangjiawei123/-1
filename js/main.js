@@ -1,1 +1,66 @@
-document.addEventListener('DOMContentLoaded',function(){const mobileMenuBtn=document.querySelector('.mobile-menu-btn');const navMenu=document.querySelector('.nav-menu');if(mobileMenuBtn){mobileMenuBtn.addEventListener('click',function(){navMenu.classList.toggle('active');});}const langBtns=document.querySelectorAll('.lang-switch button');langBtns.forEach(btn=>{btn.addEventListener('click',function(){langBtns.forEach(b=>b.classList.remove('active'));this.classList.add('active');const lang=this.dataset.lang;switchLanguage(lang);});});const observerOptions={threshold:0.1,rootMargin:'0px 0px -50px 0px'};const observer=new IntersectionObserver(function(entries){entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('animate-in');}});},observerOptions);document.querySelectorAll('.feature-card, .product-card, .solution-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='all 0.6s ease';observer.observe(el);});const statNumbers=document.querySelectorAll('.stat-item h3');const statsObserver=new IntersectionObserver(function(entries){entries.forEach(entry=>{if(entry.isIntersecting){animateNumber(entry.target);statsObserver.unobserve(entry.target);}});},{threshold:0.5});statNumbers.forEach(stat=>statsObserver.observe(stat));let lastScroll=0;window.addEventListener('scroll',function(){const navbar=document.querySelector('.navbar');const currentScroll=window.pageYOffset;if(currentScroll>100){navbar.style.boxShadow='0 2px 20px rgba(0,0,0,0.1)';}else{navbar.style.boxShadow='0 2px 10px rgba(0,0,0,0.1)';}lastScroll=currentScroll;});});function switchLanguage(lang){const elements=document.querySelectorAll('[data-zh][data-en]');elements.forEach(el=>{el.textContent=el.getAttribute('data-'+lang);});localStorage.setItem('preferred-language',lang);}function animateNumber(element){const target=parseInt(element.textContent);const duration=2000;const step=target/(duration/16);let current=0;const timer=setInterval(()=>{current+=step;if(current>=target){element.textContent=target+(element.textContent.includes('+')?'+':'');clearInterval(timer);}else{element.textContent=Math.floor(current);}},16);}const style=document.createElement('style');style.textContent='.animate-in{opacity:1!important;transform:translateY
+document.addEventListener('DOMContentLoaded', function() {
+    // 移动端菜单
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // ==============================================
+    // 中英文切换功能（已修复，可正常使用）
+    // ==============================================
+    const langBtns = document.querySelectorAll('.lang-switch button');
+    
+    // 读取本地存储的语言
+    const savedLang = localStorage.getItem('preferred-language') || 'zh';
+    switchLanguage(savedLang);
+    setActiveButton(savedLang);
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            switchLanguage(lang);
+            setActiveButton(lang);
+            localStorage.setItem('preferred-language', lang);
+        });
+    });
+
+    function switchLanguage(lang) {
+        const elements = document.querySelectorAll('[data-zh][data-en]');
+        elements.forEach(el => {
+            el.textContent = el.getAttribute('data-' + lang);
+        });
+    }
+
+    function setActiveButton(lang) {
+        langBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // 动画效果
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card, .product-card, .solution-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
+    });
+});
