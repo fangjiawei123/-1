@@ -595,9 +595,9 @@
     <div class="container">
         <h2 class="title" data-zh="产品概述" data-en="Product Overview">产品概述</h2>
         <div class="content-box">
-            <div class="text" data-zh="
-            系统专注实验室计量业务全流程精细化管理，与检定校准软件深度集成，实现从仪器收发、台账管理、检校任务调度、自动化数据采集到证书生成与归档的一体化闭环管控。系统严格遵循计量技术规范，有效提升实验室运营效率与数据合规性。">
-            The system focuses on refined management of the entire measurement business process in laboratories. It deeply integrates with calibration software to achieve a closed-loop control covering instrument receiving, ledger management, task scheduling, automated data acquisition, certificate generation, and archiving. Strictly following metrology technical specifications, it significantly improves laboratory operational efficiency and data compliance.
+            <!-- 修复：明确使用中文作为初始显示内容，同时保留 data-en 属性供切换使用 -->
+            <div class="text" data-zh="系统专注实验室计量业务全流程精细化管理，与检定校准软件深度集成，实现从仪器收发、台账管理、检校任务调度、自动化数据采集到证书生成与归档的一体化闭环管控。系统严格遵循计量技术规范 JJF 2378-2026，有效提升实验室运营效率与数据合规性，助力机构通过数字化认可。" data-en="The system focuses on refined management of the entire measurement business process in laboratories. It deeply integrates with calibration software to achieve a closed-loop control covering instrument receiving, ledger management, task scheduling, automated data acquisition, certificate generation, and archiving. Strictly following metrology technical specification JJF 2378-2026, it significantly improves laboratory operational efficiency and data compliance, helping organizations achieve digital accreditation.">
+                系统专注实验室计量业务全流程精细化管理，与检定校准软件深度集成，实现从仪器收发、台账管理、检校任务调度、自动化数据采集到证书生成与归档的一体化闭环管控。系统严格遵循计量技术规范 JJF 2378-2026，有效提升实验室运营效率与数据合规性，助力机构通过数字化认可。
             </div>
             <div class="features-grid">
                 <div class="card">
@@ -701,10 +701,10 @@
     <div class="container">
         <h2 class="title" data-zh="产品核心优势" data-en="Key Advantages">产品核心优势</h2>
         <div class="adv-list">
-            <div class="adv-item" data-zh="🎯 精准定位：聚焦单一实验室计量场景，功能精炼，避免大而全的冗余" data-en="Precise positioning: focused on single-lab metrology scenarios, refined functions avoiding redundancy">🎯 精准定位：聚焦单一实验室计量场景，功能精炼，避免大而全的冗余</div>
-            <div class="adv-item" data-zh="⚡ 极速部署：配套专用服务器，即插即用，无需协调IT资源，大幅缩短上线周期" data-en="Rapid deployment: dedicated server included, plug-and-play, no IT resource coordination, significantly shortening launch cycles">⚡ 极速部署：配套专用服务器，即插即用，无需协调IT资源，大幅缩短上线周期</div>
-            <div class="adv-item" data-zh="🔄 全流程闭环：从客户委托、样品收发、检校执行到证书签发，数据无缝流转" data-en="Full-process closed-loop: seamless data flow from client commission, sample handling, calibration execution to certificate issuance">🔄 全流程闭环：从客户委托、样品收发、检校执行到证书签发，数据无缝流转</div>
-            <div class="adv-item" data-zh="📜 合规性领先：严格对标 JJF 2378-2026《计量数字化管理平台通用要求》等最新规范" data-en="Compliance leadership: strictly aligned with JJF 2378-2026 'General Requirements for Digital Metrology Management Platforms' and other latest standards">📜 合规性领先：严格对标 JJF 2378-2026《计量数字化管理平台通用要求》等最新规范</div>
+            <div class="adv-item" data-zh="🎯 精准定位：聚焦单一实验室计量场景，功能精炼，避免大而全的冗余" data-en="🎯 Precise positioning: focused on single-lab metrology scenarios, refined functions avoiding redundancy">🎯 精准定位：聚焦单一实验室计量场景，功能精炼，避免大而全的冗余</div>
+            <div class="adv-item" data-zh="⚡ 极速部署：配套专用服务器，即插即用，无需协调IT资源，大幅缩短上线周期" data-en="⚡ Rapid deployment: dedicated server included, plug-and-play, no IT resource coordination, significantly shortening launch cycles">⚡ 极速部署：配套专用服务器，即插即用，无需协调IT资源，大幅缩短上线周期</div>
+            <div class="adv-item" data-zh="🔄 全流程闭环：从客户委托、样品收发、检校执行到证书签发，数据无缝流转" data-en="🔄 Full-process closed-loop: seamless data flow from client commission, sample handling, calibration execution to certificate issuance">🔄 全流程闭环：从客户委托、样品收发、检校执行到证书签发，数据无缝流转</div>
+            <div class="adv-item" data-zh="📜 合规性领先：严格对标 JJF 2378-2026《计量数字化管理平台通用要求》等最新规范" data-en="📜 Compliance leadership: strictly aligned with JJF 2378-2026 'General Requirements for Digital Metrology Management Platforms' and other latest standards">📜 合规性领先：严格对标 JJF 2378-2026《计量数字化管理平台通用要求》等最新规范</div>
         </div>
     </div>
 </section>
@@ -743,10 +743,23 @@
         // 获取保存的语言偏好，默认中文
         const savedLang = localStorage.getItem('preferred-language') || 'zh';
         
-        // 初始化语言
+        // 初始化语言 - 强制设置为中文显示
         if (translatableElements.length > 0) {
-            switchLanguage(savedLang);
-            setActiveLanguageButton(savedLang);
+            // 先设置所有元素为中文内容
+            translatableElements.forEach(el => {
+                const zhText = el.getAttribute('data-zh');
+                if (zhText && zhText.trim() !== '') {
+                    el.textContent = zhText;
+                }
+            });
+            // 然后根据保存的语言设置（如果有保存英文才切换）
+            if (savedLang === 'en') {
+                switchLanguage('en');
+                setActiveLanguageButton('en');
+            } else {
+                setActiveLanguageButton('zh');
+                localStorage.setItem('preferred-language', 'zh');
+            }
         }
         
         // 绑定语言切换事件
