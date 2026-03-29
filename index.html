@@ -6,7 +6,6 @@
     <title>仪软智汇 · 计量智慧管理系统</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
-        /* ========== 全局样式重置与基础设置 ========== */
         * {
             margin: 0;
             padding: 0;
@@ -28,7 +27,6 @@
             padding: 0 24px;
         }
 
-        /* ========== 导航栏样式（毛玻璃效果） ========== */
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
@@ -122,7 +120,6 @@
             transform: translateY(-2px);
         }
 
-        /* 移动端菜单按钮 */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -134,7 +131,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* ========== 横幅 Banner（视差效果） ========== */
         .banner {
             background: linear-gradient(135deg, #0a2b4e 0%, #1a4a7a 50%, #2c7be5 100%);
             color: #fff;
@@ -199,6 +195,17 @@
             }
         }
 
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .banner-content h1 {
             font-size: 56px;
             margin-bottom: 24px;
@@ -213,6 +220,27 @@
             opacity: 0.92;
             line-height: 1.6;
             max-width: 500px;
+        }
+
+        .banner-image {
+            flex: 1;
+            animation: fadeInRight 0.8s ease;
+            position: relative;
+        }
+
+        .banner-image img {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            object-fit: cover;
+        }
+
+        .banner-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
         }
 
         .btn {
@@ -235,7 +263,6 @@
             box-shadow: 0 8px 25px rgba(0, 86, 179, 0.25);
         }
 
-        /* ========== 通用区块样式 ========== */
         .section {
             padding: 100px 0;
             opacity: 0;
@@ -278,7 +305,6 @@
             border-radius: 2px;
         }
 
-        /* 产品概述部分 */
         .content-box {
             max-width: 1100px;
             margin: 0 auto;
@@ -327,7 +353,6 @@
             font-weight: 700;
         }
 
-        /* 与LIMS对比区域 */
         .compare-box {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -358,7 +383,6 @@
             font-weight: 600;
         }
 
-        /* 核心价值区域 */
         .value-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -388,7 +412,6 @@
             font-weight: 700;
         }
 
-        /* 功能介绍网格 */
         .func-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -417,7 +440,6 @@
             font-weight: 600;
         }
 
-        /* 产品优势列表 */
         .adv-list {
             max-width: 800px;
             margin: 0 auto;
@@ -444,7 +466,6 @@
             border-left-width: 6px;
         }
 
-        /* 统计数据区域（新增） */
         .stats {
             background: linear-gradient(135deg, #0a2b4e 0%, #1a4a7a 100%);
             color: #fff;
@@ -478,7 +499,6 @@
             font-weight: 500;
         }
 
-        /* 联系我们区域 */
         .contact {
             background: linear-gradient(120deg, #eef2ff 0%, #ffffff 100%);
             border-radius: 40px;
@@ -506,7 +526,6 @@
             padding: 8px 0;
         }
 
-        /* 页脚 */
         .footer {
             background-color: #0a2b4e;
             color: #cddcec;
@@ -516,31 +535,16 @@
             font-size: 0.85rem;
         }
 
-        /* ========== 响应式设计 ========== */
         @media (max-width: 992px) {
-            .banner-content h1 {
-                font-size: 42px;
-            }
-            .title {
-                font-size: 34px;
-            }
-            .section {
-                padding: 70px 0;
-            }
-            .stat-number {
-                font-size: 38px;
-            }
+            .banner-content h1 { font-size: 42px; }
+            .title { font-size: 34px; }
+            .section { padding: 70px 0; }
+            .stat-number { font-size: 38px; }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
+            .container { padding: 0 20px; }
+            .mobile-menu-btn { display: block; }
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -554,99 +558,35 @@
                 box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
                 z-index: 999;
             }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-menu li {
-                border-bottom: 1px solid #eef2f6;
-            }
-            
-            .nav-menu a {
-                display: block;
-                padding: 16px 24px;
-            }
-            
-            .nav-menu a::before {
-                display: none;
-            }
-            
-            .banner {
-                padding: 120px 0 80px;
-            }
-            
-            .banner .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .banner-content {
-                padding-right: 0;
-                margin-bottom: 30px;
-            }
-            
-            .banner-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .features-grid,
-            .compare-box,
-            .value-list,
-            .func-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            
-            .title {
-                font-size: 28px;
-                margin-bottom: 40px;
-            }
-            
-            .text {
-                padding: 24px;
-                font-size: 1rem;
-            }
-            
-            .adv-item {
-                border-radius: 20px;
-                padding: 14px 20px;
-            }
-            
-            .contact-info {
-                padding: 28px 24px;
-                margin: 0 16px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
+            .nav-menu.active { display: flex; }
+            .nav-menu li { border-bottom: 1px solid #eef2f6; }
+            .nav-menu a { display: block; padding: 16px 24px; }
+            .nav-menu a::before { display: none; }
+            .banner { padding: 120px 0 80px; }
+            .banner .container { flex-direction: column; text-align: center; }
+            .banner-content { padding-right: 0; margin-bottom: 40px; }
+            .banner-content p { margin-left: auto; margin-right: auto; }
+            .banner-image { text-align: center; }
+            .banner-image img { max-width: 90%; }
+            .features-grid, .compare-box, .value-list, .func-grid { grid-template-columns: 1fr; gap: 24px; }
+            .title { font-size: 28px; margin-bottom: 40px; }
+            .text { padding: 24px; font-size: 1rem; }
+            .adv-item { border-radius: 20px; padding: 14px 20px; }
+            .contact-info { padding: 28px 24px; margin: 0 16px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
         @media (max-width: 480px) {
-            .banner-content h1 {
-                font-size: 32px;
-            }
-            
-            .btn {
-                padding: 12px 32px;
-            }
-            
-            .section {
-                padding: 50px 0;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+            .banner-content h1 { font-size: 32px; }
+            .btn { padding: 12px 32px; }
+            .section { padding: 50px 0; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .banner-image img { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
-<!-- 导航 -->
 <header class="header" id="header">
     <div class="container">
         <div class="navbar">
@@ -668,7 +608,7 @@
     </div>
 </header>
 
-<!-- 横幅 -->
+<!-- 横幅 - 使用你上传的 banner-image.jpg -->
 <section class="banner" id="home">
     <div class="container">
         <div class="banner-content">
@@ -676,10 +616,17 @@
             <p data-zh="面向实验室与计量机构的全流程数字化管控平台" data-en="Full-process digital management platform for laboratories and metrology institutions">面向实验室与计量机构的全流程数字化管控平台</p>
             <a href="#contact" class="btn" data-zh="申请试用" data-en="Request Demo">申请试用</a>
         </div>
+        <div class="banner-image">
+            <img src="images/banner-image.jpg" 
+                 alt="计量智慧管理系统界面" 
+                 style="width:100%; max-width:550px; height:auto; border-radius:24px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); transition:all 0.4s ease;"
+                 onmouseover="this.style.transform='scale(1.02)'"
+                 onmouseout="this.style.transform='scale(1)'"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/0056b3/white?text=计量系统界面'">
+        </div>
     </div>
 </section>
 
-<!-- 统计数据区域（新增） -->
 <section class="stats">
     <div class="container">
         <div class="stats-grid">
@@ -703,7 +650,6 @@
     </div>
 </section>
 
-<!-- 产品概述 -->
 <section id="product" class="section bg-white">
     <div class="container">
         <h2 class="title" data-zh="产品概述" data-en="Product Overview">产品概述</h2>
@@ -729,7 +675,6 @@
     </div>
 </section>
 
-<!-- 与LIMS区别 -->
 <section class="section bg-light">
     <div class="container">
         <h2 class="title" data-zh="与传统LIMS系统的差异化定位" data-en="Differentiation from Traditional LIMS">与传统LIMS系统的差异化定位</h2>
@@ -750,7 +695,6 @@
     </div>
 </section>
 
-<!-- 核心价值 -->
 <section id="value" class="section bg-white">
     <div class="container">
         <h2 class="title" data-zh="核心价值" data-en="Core Value">核心价值</h2>
@@ -775,7 +719,6 @@
     </div>
 </section>
 
-<!-- 功能介绍 -->
 <section id="function" class="section bg-light">
     <div class="container">
         <h2 class="title" data-zh="核心功能模块" data-en="Core Functional Modules">核心功能模块</h2>
@@ -808,7 +751,6 @@
     </div>
 </section>
 
-<!-- 产品优势 -->
 <section id="advantage" class="section bg-white">
     <div class="container">
         <h2 class="title" data-zh="产品核心优势" data-en="Key Advantages">产品核心优势</h2>
@@ -821,7 +763,6 @@
     </div>
 </section>
 
-<!-- 联系我们 -->
 <section id="contact" class="section contact">
     <div class="container">
         <h2 class="title" data-zh="联系我们" data-en="Contact Us">联系我们</h2>
@@ -834,7 +775,6 @@
     </div>
 </section>
 
-<!-- 页脚 -->
 <footer class="footer">
     <div class="container">
         <p data-zh="© 2026 青岛仪软智汇科技有限公司 版权所有 | 鲁ICP备xxxxxx号" data-en="© 2026 Qingdao Yiruan Intelligence Technology Co., Ltd. All Rights Reserved">© 2026 青岛仪软智汇科技有限公司 版权所有 | 鲁ICP备xxxxxx号</p>
@@ -842,13 +782,7 @@
 </footer>
 
 <script>
-    /**
-     * 计量智慧管理系统 - 优化版
-     * 功能：中英文切换、移动端菜单、平滑滚动、数字滚动动画、滚动显示动画、导航栏渐变
-     */
-
     document.addEventListener('DOMContentLoaded', function() {
-        // ========== 1. 导航栏滚动效果 ==========
         const header = document.querySelector('.header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -858,13 +792,11 @@
             }
         });
 
-        // ========== 2. 数字滚动动画 ==========
         function animateNumbers() {
             const statNumbers = document.querySelectorAll('.stat-number');
             statNumbers.forEach(el => {
                 const target = parseInt(el.dataset.target);
                 if (!target || el.classList.contains('animated')) return;
-                
                 let current = 0;
                 const increment = target / 60;
                 const timer = setInterval(() => {
@@ -880,17 +812,11 @@
             });
         }
 
-        // ========== 3. 滚动显示动画（Intersection Observer） ==========
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // 如果进入的是统计数据区域，触发数字动画
                     if (entry.target.classList.contains('stats')) {
                         animateNumbers();
                     }
@@ -902,7 +828,6 @@
             sectionObserver.observe(el);
         });
 
-        // 立即触发一次，检查是否有元素已经可见
         setTimeout(() => {
             document.querySelectorAll('.section, .stats').forEach(el => {
                 const rect = el.getBoundingClientRect();
@@ -915,10 +840,8 @@
             });
         }, 100);
 
-        // ========== 4. 中英文切换系统 ==========
         const langBtns = document.querySelectorAll('.lang-switch button');
         const translatableElements = document.querySelectorAll('[data-zh][data-en]');
-        
         const savedLang = localStorage.getItem('preferred-language') || 'zh';
         
         if (translatableElements.length > 0) {
@@ -970,8 +893,7 @@
                 }
             });
         }
-        
-        // ========== 5. 移动端菜单 ==========
+
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navMenu = document.querySelector('.nav-menu');
         
@@ -988,9 +910,7 @@
                     document.body.style.overflow = '';
                 }
             }
-            
             mobileMenuBtn.addEventListener('click', toggleMenu);
-            
             const menuLinks = navMenu.querySelectorAll('a');
             menuLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -999,34 +919,25 @@
                     }
                 });
             });
-            
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
                     toggleMenu();
                 }
             });
         }
-        
-        // ========== 6. 平滑滚动 ==========
+
         const allLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-        
         allLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
                     const headerHeight = header ? header.offsetHeight : 72;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                    
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                     history.pushState(null, null, targetId);
                 }
             });
